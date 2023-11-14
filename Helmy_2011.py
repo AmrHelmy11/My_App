@@ -1,10 +1,8 @@
 import streamlit as st
 import joblib
 import pandas as pd
-import zipfile
-with zipfile.ZipFile("Car Price Prediction Model.zip", "r") as zip_file:
-    pipeline=joblib.load(zip_file.open("Car Price Prediction Model.h5"))
 preprocessor=joblib.load("preprocessor.h5")
+pipeline=joblib.load("https://github.com/AmrHelmy11/My_App/releases/download/cars/Car.Price.Prediction.Model.h5")
 model=joblib.load("Model.h5")
 scaler=joblib.load("Scaler.h5")
 inputs=joblib.load("input.h5")
