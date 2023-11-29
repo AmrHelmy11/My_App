@@ -1,14 +1,15 @@
 import streamlit as st
 import pandas as pd
 import joblib
+from sklearn.pipeline import Pipeline
 preprocessor=joblib.load("preprocessor.h5")
-pipeline=joblib.load("Car Price Prediction Model.h5")
 model=joblib.load("Model.h5")
 scaler=joblib.load("Scaler.h5")
 inputs=joblib.load("input.h5")
 Brands_List=joblib.load("Brands_List.h5")
 Models_List=joblib.load("Models_List.h5")
 Status_List=joblib.load("Status_List.h5")
+pipeline=Pipeline([("StandardScaler",scaler),("KNN",model)])
 
 def predict(Brand,Model,Status,Year,Mileage):
     test_df=pd.DataFrame(columns=inputs)
